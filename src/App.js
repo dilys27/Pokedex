@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import './App.scss';
+import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Image from './components/Image'
+
+import Home from './pages/HomePage'
+import Error404 from './pages/Error404'
+
+import NavBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+
+class App extends Component {
+    
+  render(){
+      return (
+          <Router>
+              <NavBar position="sticky">
+                <Toolbar>
+                <Image image="https://fontmeme.com/permalink/191013/b79629d5ed22cd020e06bebb471f2605.png" />
+                <ul>
+                    <Typography>
+                    <NavLink exact
+                          to="/"
+                          activeStyle={{
+                              fontWeight: "bold",
+                              color: "white"
+                          }}    
+                              >Accueil
+                   </NavLink>
+                   </Typography>
+                </ul>
+                </Toolbar>
+              </NavBar>
+              <Switch>
+                  <Route path="/" component={Home} />
+                  <Route component={Error404} />
+              </Switch>
+          </Router>
+      );
+  }
 }
 
 export default App;
