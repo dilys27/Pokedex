@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import './App.scss';
 import { BrowserRouter as Router, Switch, Route, NavLink} from "react-router-dom";
 
-import Image from './components/Image'
-
 import Home from './pages/HomePage'
 import Error404 from './pages/Error404'
 
@@ -18,7 +16,7 @@ class App extends Component {
           <Router>
               <NavBar position="sticky">
                 <Toolbar>
-                <Image image="https://fontmeme.com/permalink/191013/b79629d5ed22cd020e06bebb471f2605.png" />
+                <img src="https://fontmeme.com/permalink/191013/b79629d5ed22cd020e06bebb471f2605.png" />
                 <ul>
                     <Typography>
                     <NavLink exact
