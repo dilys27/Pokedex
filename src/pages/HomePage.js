@@ -28,7 +28,6 @@ class HomePage extends Component {
 
         try {
             const res = await axios.get(this.state.url);
-            console.log(res.data['results']);
             this.setState({
                 pokemons: res.data['results'],
                 isLoading: false,
@@ -53,7 +52,7 @@ class HomePage extends Component {
         return (
             <div>
                 <Typography gutterBottom variant="h2" component="h2">
-                    Bienvenue !
+                    Bienvenue
                 </Typography>
                 <Filter value={this.state.value} handleChange={this.handleChange} />
                 {this.state.error ?

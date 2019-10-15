@@ -9,8 +9,6 @@ class Item extends Component {
             name: '',
             imgURL: '',
             index: '',
-            isLoading: false,
-            error: null,
         };
     }
 
@@ -22,7 +20,6 @@ class Item extends Component {
             name,
             imgURL,
             index,
-            isLoading: true,
         });
     }
 
@@ -34,7 +31,7 @@ class Item extends Component {
                         <CardContent>
                             <img src={this.state.imgURL} />
                             <Typography gutterBottom variant="h5" component="h2">
-                                {this.state.name}
+                                {this.state.name.toUpperCase()}
                             </Typography>
                         </CardContent>
                     </CardActionArea>

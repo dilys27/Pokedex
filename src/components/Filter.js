@@ -1,18 +1,19 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
+import { FormLabel } from '@material-ui/core'
 
-class Filter extends Component { 
+class Filter extends Component {
     render() {
         return (
-                <div>
-                    <form onSubmit={ev => ev.preventDefault()}>
-                        <label>
-                            Recherche :
-                            <input type="text" onChange={this.props.handleChange} />
-                        </label>
-                        <p>{this.props.value}</p>
-                    </form>
-                </div>    
-            )
+            <div>
+                <form onSubmit={ev => ev.preventDefault()}>
+                    <FormLabel>
+                        Recherche 
+                        <input type="text" placeholder="Nom du pokémon" onChange={this.props.handleChange} />
+                    </FormLabel>
+                    <p>{this.props.value}</p>
+                </form>
+            </div>
+        )
     }
 }
 

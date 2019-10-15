@@ -6,7 +6,7 @@ class Liste extends Component {
     render() {
         return (
             <div style={{ marginTop: 20, padding: 30 }}>
-                <Grid container spacing={40} justify="center">
+                <Grid container spacing={6} justify="center">
                     {this.props.pokemons.map((pokemon, index) => (
                         <Item
                             key={index}
