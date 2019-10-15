@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 
-import Filter from '../components/Filter'
-import Liste from '../containers/Liste'
-import Loader from '../components/Loader'
+import { Typography } from '@material-ui/core'
 
-//import Title from '@material-ui/core/'
+import Filter from '../components/Filter'
+import Liste from '../components/Liste'
+import Loader from '../components/Loader'
 
 class HomePage extends Component {
     constructor(props) {
@@ -22,19 +22,19 @@ class HomePage extends Component {
     }
 
     async componentDidMount() {
-        this.setState ({
+        this.setState({
             isLoading: true,
         });
-        
+
         try {
             const res = await axios.get(this.state.url);
             console.log(res.data['results']);
-            this.setState ({
+            this.setState({
                 pokemons: res.data['results'],
                 isLoading: false,
             });
         } catch (err) {
-            this.setState ({
+            this.setState({
                 isLoading: false,
                 error: err.message,
             });
@@ -45,19 +45,21 @@ class HomePage extends Component {
     handleChange(event) {
         this.setState({
             value: event.target.value,
-            pokemons: this.state.pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(event.target.value.toLowerCase()),),
+            pokemons: this.state.pokemons.filter(pokemon => pokemon.name.toLowerCase().includes(event.target.value.toLowerCase())),
         });
     }
 
-    render(){
+    render() {
         return (
             <div>
-                <h1>Liste des pokémons</h1>
+                <Typography gutterBottom variant="h2" component="h2">
+                    Bienvenue !
+                </Typography>
                 <Filter value={this.state.value} handleChange={this.handleChange} />
-                { this.state.error ? 
-                 (this.state.error) : !this.state.isLoading ? 
-                 <Liste pokemons={this.state.pokemons} />
-                    : <Loader />   
+                {this.state.error ?
+                    (this.state.error) : !this.state.isLoading ?
+                        <Liste pokemons={this.state.pokemons} />
+                        : <div className="centered"><Loader /></div>
                 }
             </div>
         );
